@@ -42,10 +42,8 @@ ActiveRecord::Schema.define(version: 2021_05_22_235547) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "projects_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["projects_id"], name: "index_categories_on_projects_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -61,8 +59,10 @@ ActiveRecord::Schema.define(version: 2021_05_22_235547) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "categories_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["categories_id"], name: "index_projects_on_categories_id"
   end
 
   create_table "users", force: :cascade do |t|
