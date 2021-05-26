@@ -1,5 +1,7 @@
-<h1>Log in page </h1>
-
+<h1>Log</h1>
+<div id = 'flash' class= 'error' style='color:red'>
+<%= flash[:message] if flash[:message] %>
+</div>
 <%= form_tag %>
 Username:
 <%= text_field_tag :username %>
