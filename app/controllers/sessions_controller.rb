@@ -1,5 +1,6 @@
 
 class SessionsController < ApplicationController
+    before_action :require_log_in, except: [:login, :create, :home, :destroy]
     def home
     end
 

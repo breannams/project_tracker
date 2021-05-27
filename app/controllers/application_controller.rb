@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-     before_action :require_log_in, except: [:login, :create, :home, :destroy]
-
+   helper_method :current_user, :logged_in?
+   
+private
     def current_user
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
