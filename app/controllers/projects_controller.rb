@@ -8,12 +8,15 @@ class ProjectsController < ApplicationController
 
     def new
         @project = Project.new
+        @categories = Category.all
+        
     end
 
     def create 
-        @project = current_user.projects.build(project_params)
+     
+        @project = Project.create(project_params)
         if @project.save
-            redirect_to projects_path
+            redirect_to project_path(@project)
         else
             render :new
         end
