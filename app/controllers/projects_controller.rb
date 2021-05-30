@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
     before_action :set_project, only:[:show, :edit, :update, :destroy]
 
     def index
-        @project = Project.all
+        @projects = Project.all
+     
     end
 
     def new
@@ -13,30 +14,28 @@ class ProjectsController < ApplicationController
     end
 
     def create 
-     
+       # binding.pry
         @project = Project.create(project_params)
+     
         if @project.save
-            redirect_to project_path(@project)
+            redirect_to projects_path
         else
             render :new
         end
     end
 
     def show
-
+        
     end
 
-    def create
-    end
-
-    def edit
-    end
+    # def edit
+    # end
     
-    def update
-    end
+    # def update
+    # end
 
-    def destroy
-    end
+    # def destroy
+    # end
 
 
     private
@@ -46,6 +45,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:title, :description, :categories_id)
+        params.require(:project).permit(:title, :description, :collaboration)
     end
 end
