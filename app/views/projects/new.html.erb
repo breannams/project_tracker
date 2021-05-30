@@ -1,21 +1,28 @@
 <h1>Create a New project </h1>
 
 <%= form_for @project do |f| %>
+    <%= f.label :collaboration, "Check this box if you would like your project to be public to work on as a collaboration." %>
+    <%= f.check_box :collaboration %>
+    <br>
 
     <%= f.label :title %>
     <%= f.text_field :title %>
     <br>
-
-    <%= f.label :collaboration, "Check this box if you would like your project to be public to work on as a collaboration." %>
-    <%= f.check_box :collaboration %>
-<br>
     
-<%= f.label :description %>
-    <%= f.text_area :description %>
-<br>
- 
+    <%= f.label :description %>
+        <%= f.text_area :description %>
+    <br>
+    
+    <%= f.label "Category:" %>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    <br>
 
-
+    <%= f.label "Create a new category:" %>
+    <%= f.fields_for :categories, @project.categories.build do |categories_fields| %>
+      <%= categories_fields.text_field :name %>
+    <% end %>
+    <br>
+    
   <%= f.submit %>
 
   <%end %>
