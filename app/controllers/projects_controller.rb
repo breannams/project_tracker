@@ -28,11 +28,17 @@ class ProjectsController < ApplicationController
        @entries = Entry.all
     end
 
-    # def edit
-    # end
+    def edit
+    end
     
-    # def update
-    # end
+    def update
+        @project.update(project_params)
+        if @project.update(project_params)
+            redirect_to projects_path
+        else
+            render :edit
+        end
+    end
 
     # def destroy
     # end
