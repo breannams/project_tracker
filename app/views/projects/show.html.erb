@@ -1,1 +1,17 @@
-<h1> A project's show page </h1>
+<h1> <%= @project.title %> </h1>
+
+<h2><%= @project.description %></h2>
+
+<h3><ul><%= @project.categories.each do |category| %>
+   <li> <%= link_to(category.name, category) %> </li>
+   
+    <%end%></h3>
+    </ul>
+
+<h1>Entries: </h1>
+
+<ol><%= @entries.each do |entry| %>
+    <li>
+    <%= entry.notes %>
+    </li>
+    <% end %></ol>

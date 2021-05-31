@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
     end
 
     def show
-        
+       @entries = Entry.all
     end
 
     # def edit
