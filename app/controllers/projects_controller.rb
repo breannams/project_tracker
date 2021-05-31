@@ -45,6 +45,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:title, :description, :collaboration)
+        params.require(:project).permit(:title, :description, :collaboration, category_ids:[], categories_attributes: [:name])
     end
 end
