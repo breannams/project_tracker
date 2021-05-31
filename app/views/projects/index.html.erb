@@ -1,2 +1,21 @@
-<h1>Index page </h1>
+<h1>Your projects:</h1>
+<ul>
+<%= @projects.each do |project| %>
+  <li><h2>Title: <%= project.title %></h2>
+    -Created at:<%= project.created_at.strftime("%m/%e/%Y %l:%M %p") %>
+    <br>
+    -Last updated:<%= project.updated_at.strftime("%m/%e/%Y %l:%M %p") %>
+    <br>
 
+    
+    <b>Categories:</b>
+    <br>
+    <% project.categories.each do |category| %>
+    -<%= category.name %>
+   <br>
+    <%end%>
+    <br>
+        <%= link_to "View this project", project_path(project) %>
+</li>
+<% end %>
+</ul>
