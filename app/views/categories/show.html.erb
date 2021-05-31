@@ -1,0 +1,7 @@
+<h1>Projects for <%= @category.name %> </h1>
+
+<ol>
+<%= @category.projects.each do |project| %>
+    <li><%= link_to project.title, project %> </li>
+<%end%>
+</ol>
