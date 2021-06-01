@@ -1,6 +1,6 @@
 <h1> Create a new Entry </h1>
 
-<%= form_for @entry do |f| %>
+<%form_for @entry do |f| %>
     <%= f.label "Choose a project for this entry:" %>
     <%= f.collection_select :project_id, Project.all, :id, :title, include_blank:true %>
 

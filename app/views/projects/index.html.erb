@@ -1,6 +1,6 @@
 <h1>Your projects:</h1>
 <ul>
-<%= @projects.each do |project| %>
+<% @projects.each do |project| %>
   <li><h2>Title: <%= project.title %></h2>
     -Created at:<%= project.created_at.strftime("%m/%e/%Y %l:%M %p") %>
     <br>
