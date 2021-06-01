@@ -19,12 +19,21 @@ class EntriesController < ApplicationController
 
     end
 
+    def update
+        
+        @entry.update(entry_params)
+        if @entry.update(entry_params)
+            redirect_to project_path
+        else
+            render :edit
+        end
+    end
 
 
     def delete_file
         file = ActiveStorage::Attachment.find(params[:id])
         file.purge
-        redirect_back(fallback_location: posts_path)
+        redirect_back(fallback_location: entries_path)
       end
       
 
