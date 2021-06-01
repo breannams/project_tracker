@@ -14,6 +14,22 @@
     <li>
     <%= entry.notes %>
     </li>
+
+ 
+
+        <% if entry.images.any? %>
+        <h3>Attachments:</h3>
+        <% entry.images.each do |file| %>
+          <% if file.variable? %>
+            <%= image_tag file.variant(resize: "400x400") %>
+          <% elsif file.previewable? %>
+            <%= image_tag file.preview(resize: "400x400"), rails_blob_path(file, disposition: :attachment) %>
+          <% else %>
+            <%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>
+          <% end %>
+        <% end %>
+      <% end %>
+
     <% end %></ol>
 
     <%= link_to "Add a new entry", new_entry_path %>

@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
     before_action :require_log_in
     before_action :set_entry, only:[:edit, :update, :destroy]
-    
+
     def new
         @entry = Entry.new
     end
@@ -20,6 +20,14 @@ class EntriesController < ApplicationController
     end
 
 
+
+    def delete_file
+        file = ActiveStorage::Attachment.find(params[:id])
+        file.purge
+        redirect_back(fallback_location: posts_path)
+      end
+      
+
     private
     
     def set_entry
@@ -27,6 +35,6 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:notes, :project_id)
+        params.require(:entry).permit(:notes, :project_id, images: [])
     end
 end
