@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
 
     def index
         @projects = Project.all
-     
     end
 
     def new
@@ -14,7 +13,6 @@ class ProjectsController < ApplicationController
     end
 
     def create 
-       
         @project = Project.create(project_params)
      
         if @project.save
@@ -22,6 +20,10 @@ class ProjectsController < ApplicationController
         else
             render :new
         end
+    end
+
+    def all
+        @projects = Project.all
     end
 
     def show

@@ -10,11 +10,14 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
+  get '/projects/all', to: 'projects#all'
+  
   resources :entries do
     member do
       delete :delete_file
     end
   end
+  
   
   resources :projects
   resources :users

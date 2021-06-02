@@ -1,0 +1,11 @@
+<h1> Get inspiration from other people's projects! </h1>
+
+<ol>
+<% @projects.each do |project| %>
+    <strong><li><h3>Title: <%= link_to(project.title, project) %> </h3></li></strong>
+        <ul>
+            <li>Description: <%= project.description %></li>
+            <li>Number of Entries: <%= project.entries.count %> </li>
+        </ul>
+    <% end %>
+</ol>
