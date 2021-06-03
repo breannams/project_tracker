@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   
   resources :users do 
-    resources :projects, shallow: true
+    resources :projects, only: [:index]
   end
 
   resources :categories, only: [:show]

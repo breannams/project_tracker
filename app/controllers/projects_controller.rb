@@ -17,14 +17,7 @@ class ProjectsController < ApplicationController
     end
 
     def new
-        if params[:user_id]
-            @user =  User.find_by_id(params[:user_id])
-            if @user
-                @project = @user.projects.build
-            else
-                @project = Project.new
-            end
-        end
+        @project = Project.new
         @categories = Category.all
     end
 
