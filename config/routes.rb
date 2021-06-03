@@ -18,9 +18,14 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :projects do
+    resources :entries, only: [:new]
+  end
   
-  resources :projects
-  resources :users
-  resources :categories
+  resources :users do 
+    resources :projects, only: [:index]
+  end
+
+  resources :categories, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

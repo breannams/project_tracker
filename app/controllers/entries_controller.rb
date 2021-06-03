@@ -26,7 +26,7 @@ class EntriesController < ApplicationController
         
         @entry.update(entry_params)
         if @entry.update(entry_params)
-            redirect_to project_path
+            redirect_to project_path(params[:entry][:project_id])
             flash[:sucess] = "Your entry has been updated"
         else
             flash[:message] = "Your notes section cannot be blank."
