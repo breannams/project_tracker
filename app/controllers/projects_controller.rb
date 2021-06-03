@@ -3,7 +3,16 @@ class ProjectsController < ApplicationController
     before_action :set_project, only:[:show, :edit, :update, :destroy]
 
     def index
-        @projects = Project.all
+        if params[:user_id]
+            @user.find_by_id(params[:id])
+            if @user
+            @projects = @user.projects
+            else
+                flash[:message] = "That user doesn't exist."
+            end
+        else
+            @projects = Project.all
+        end
     end
 
     def new
@@ -37,7 +46,7 @@ class ProjectsController < ApplicationController
         @project.update(project_params)
         if @project.update(project_params)
             redirect_to projects_path
-            flash[:sucess] = "Your project has been updated."
+            flash[:success] = "Your project has been updated."
         else
             render :edit
         end
