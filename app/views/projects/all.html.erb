@@ -3,7 +3,7 @@
 
 <ol>
 <% @projects.each do |project| %>
-    <% if project.collaboration == true %>
+    <% if project.public == true %>
     <strong><li><h3>Title: <%= link_to(project.title, project) %> </h3></li></strong>
         <ul>
             <% project.categories.each do |category| %>
