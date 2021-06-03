@@ -1,9 +1,16 @@
-<h1> Create a new Entry </h1>
+<% if @entry.project %>
+    <h1>New comment for <%= @entry.project.title %></h1>
+<% else %>
+    <h1> Create a new Entry </h1>
+<% end %>
 
-<%= form_for @entry do |f| %>
-    <%= f.label :project_id  %>
-    <%= f.collection_select :project_id, Project.all, :id, :title%>
-
+<%= form_for ([@entry.project, @entry]) do |f| %>
+    <% if !@entry.project %>
+        <%= f.label :project_id  %>
+        <%= f.collection_select :project_id, Project.all, :id, :title%>
+    <% else %>
+        <%= f.hidden_field :project_id %>
+    <% end %>
 
     <%= f.label :notes %>
     <%= f.text_area :notes %>

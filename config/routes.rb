@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   end
   
   resources :projects do
-    resources :entries, only: [:new]
+    resources :entries
   end
   
   resources :users do 
-    resources :projects, only: [:index]
+    resources :projects
   end
 
   resources :categories, only: [:show]

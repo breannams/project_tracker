@@ -1,6 +1,7 @@
 <h1>Create a New project </h1>
 
-<%= form_for @project do |f| %>
+<%= form_for ([@user, @project]) do |f| %>
+    
     <%= f.label :public, "Check this box if you would like your project to be able to be viewed by the public for inspiration!" %>
     <%= f.check_box :public %>
     <br>

@@ -3,7 +3,14 @@ class EntriesController < ApplicationController
     before_action :set_entry, only:[:edit, :update, :destroy]
 
     def new
-        @entry = Entry.new
+        if params[:project_id]
+            @project = Project.find_by_id(params[:project_id])
+            if @project
+                @entry = @project.entries.build
+            else
+                @entry = Entry.new
+            end
+        end   
     end
 
     def create
@@ -23,8 +30,6 @@ class EntriesController < ApplicationController
     end
 
     def update
-        
-        @entry.update(entry_params)
         if @entry.update(entry_params)
             redirect_to project_path(params[:entry][:project_id])
             flash[:sucess] = "Your entry has been updated"

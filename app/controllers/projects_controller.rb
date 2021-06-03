@@ -17,19 +17,22 @@ class ProjectsController < ApplicationController
     end
 
     def new
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @project = @user.projects.build
-        else
-            @project = Project.new
+        if params[:user_id]
+            @user =  User.find_by_id(params[:user_id])
+            if @user
+                @project = @user.projects.build
+            else
+                @project = Project.new
+            end
         end
-             @categories = Category.all
+        @categories = Category.all
     end
 
     def create 
         @project = current_user.projects.build(project_params)
      
         if @project.save
-            redirect_to projects_path
+            redirect_to user_projects_path(current_user)
             flash[:success] = "Your new project has been created!"
         else
             flash.now[:message] = "Please be sure to fill out your title and description."
@@ -49,9 +52,9 @@ class ProjectsController < ApplicationController
     end
     
     def update
-        @project.update(project_params)
+       
         if @project.update(project_params)
-            redirect_to projects_path
+            redirect_to project_path(@project)
             flash[:success] = "Your project has been updated."
         else
             render :edit
