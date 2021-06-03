@@ -1,7 +1,11 @@
 
 <h1> <%= @project.title %> by <%= @project.user.username %></h1>
 
-<h2><%= @project.description %></h2>
+<h2>Description: <%= @project.description %></h2>
+
+<% if @project.collaboration %>
+   <strong> This is a collaboration project! Please note that the original creator can edit or delete any entries that are added by other users. </strong>
+    <%end %>
 
 <% if @project.categories.any? %>
 <h4><ul><% @project.categories.each do |category| %>
