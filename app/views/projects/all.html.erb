@@ -1,19 +1,23 @@
-<h1> Get inspiration from other people's projects! </h1>
+<h1> Get inspiration from other user's projects! </h1>
 
-
-<ol>
 <% @projects.each do |project| %>
     <% if project.public == true %>
-    <strong><li><h3>Title: <%= link_to(project.title, project) %> </h3></li></strong>
-        <ul>
+    <ul>
+ <li><h3>Title: <%= link_to(project.title, project) %> </h3></li>
+       <ul>
             <% project.categories.each do |category| %>
             <li> <%= link_to(category.name, category) %> </li>
              <%end%>
 
-         
             <li>Description: <%= project.description %></li>
             <li>Number of Entries: <%= project.entries.count %> </li>
+
+                <% if project.collaboration %>
+                   <li>This is a collaboration project! Lets work on it together! :)</li>
+                <% end %>
+            </ul>
         </ul>
+        
     <% end %>
-</ol>
+    
 <% end %>
