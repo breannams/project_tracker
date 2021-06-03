@@ -1,3 +1,7 @@
+<div id = 'flash' class= 'error' style='color:red'>
+<%= flash[:message] if flash[:message] %>
+</div>
+
 <h1> Edit This Entry </h1>
 
 <%= form_for @entry do |f| %>

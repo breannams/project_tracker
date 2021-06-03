@@ -13,6 +13,7 @@ class EntriesController < ApplicationController
             redirect_to project_path(params[:entry][:project_id])
             flash[:sucess] = "Your entry has been created!"
         else
+            flash.now[:message] = "Please do not leave notes section blank."
             render :new
         end
     end
@@ -28,6 +29,7 @@ class EntriesController < ApplicationController
             redirect_to project_path
             flash[:sucess] = "Your entry has been updated"
         else
+            flash[:message] = "Your notes section cannot be blank."
             render :edit
         end
     end
