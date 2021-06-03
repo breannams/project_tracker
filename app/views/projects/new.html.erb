@@ -1,3 +1,7 @@
+<div id = 'flash' class= 'error' style='color:red'>
+<%= flash[:message] if flash[:message] %>
+</div>
+
 <h1>Create a New project </h1>
 
 <%= form_for @project do |f| %>

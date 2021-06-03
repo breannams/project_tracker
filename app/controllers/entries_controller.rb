@@ -8,8 +8,10 @@ class EntriesController < ApplicationController
 
     def create
         @entry = current_user.entries.create(entry_params)
+     
         if @entry.save
-            redirect_to :controller => "projects", :action => "index"
+            redirect_to project_path(params[:entry][:project_id])
+            flash[:sucess] = "Your entry has been created!"
         else
             render :new
         end
@@ -24,6 +26,7 @@ class EntriesController < ApplicationController
         @entry.update(entry_params)
         if @entry.update(entry_params)
             redirect_to project_path
+            flash[:sucess] = "Your entry has been updated"
         else
             render :edit
         end

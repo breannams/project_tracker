@@ -16,8 +16,10 @@ class ProjectsController < ApplicationController
      
         if @project.save
             redirect_to projects_path
+            flash[:success] = "Your new project has been created!"
         else
             render :new
+            flash[:message] = "Please be sure to fill out your title and description."
         end
     end
 
@@ -35,6 +37,7 @@ class ProjectsController < ApplicationController
         @project.update(project_params)
         if @project.update(project_params)
             redirect_to projects_path
+            flash[:sucess] = "Your project has been updated."
         else
             render :edit
         end
