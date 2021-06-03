@@ -6,18 +6,22 @@
 <ul>
 <% @projects.each do |project| %>
   <li><h2>Title: <%= project.title %></h2>
-    -Created at:<%= project.created_at.strftime("%m/%e/%Y %l:%M %p") %>
+    -Number of Entries: <%= project.entries.count %>
     <br>
-    -Last updated:<%= project.updated_at.strftime("%m/%e/%Y %l:%M %p") %>
+    -Created on:<%= project.created_at.strftime("%m/%e/%Y %l:%M %p") %>
     <br>
+    -Last updated on:<%= project.updated_at.strftime("%m/%e/%Y %l:%M %p") %>
+    <br>
+  
 
-    
+<% if project.categories.any? %>
     <b>Categories:</b>
     <br>
     <% project.categories.each do |category| %>
     -<%= link_to(category.name, category) %>
    <br>
-    <%end%>
+     <%end%>
+<% end %>
     <br>
         <%= link_to "View this project", project_path(project) %>
         <%= link_to "Edit this project", edit_project_path(project)%>

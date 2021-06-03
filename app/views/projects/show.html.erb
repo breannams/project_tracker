@@ -7,11 +7,13 @@
 
 <h2><%= @project.description %></h2>
 
-<h3><ul><% @project.categories.each do |category| %>
-   <li> <%= link_to(category.name, category) %> </li>
+<% if @project.categories.any? %>
+<h4><ul><% @project.categories.each do |category| %>
+   <li> Category: <%= link_to(category.name, category) %> </li>
    
-    <%end%></h3>
+    <%end%></h4>
     </ul>
+<%end%>
 
 <h1>Entries: </h1>
 
@@ -28,6 +30,13 @@
     <% end %>
 <%end%>
 <br>
+    -Entry Created by: <%= entry.user.username %>
+    <br>
+    -Created on: <%= entry.created_at.strftime("%m/%e/%Y %l:%M %p") %>
+    <br>
+    -Last Updated on: <%= entry.updated_at.strftime("%m/%e/%Y %l:%M %p") %>
+    <br>
+
     <%= link_to "Edit Entry", edit_entry_path(entry) %>
     <%= link_to "Delete Entry", entry, method: :delete, data: {confirm: 'Are you sure you want to delete this entry?'} %>
     <% end %></ol>
