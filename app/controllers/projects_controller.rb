@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
     def new
         @project = Project.new
         @categories = Category.all
-        
     end
 
     def create 
@@ -27,7 +26,6 @@ class ProjectsController < ApplicationController
     end
 
     def show
-       @entries = Entry.all
     end
 
     def edit
