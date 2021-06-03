@@ -4,6 +4,8 @@ class Project < ApplicationRecord
     
     has_many :categories, through: :project_categories
     has_many :users, through: :entries
+    
+    validates_presence_of :title, :description
 
     accepts_nested_attributes_for :categories
     

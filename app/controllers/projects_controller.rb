@@ -18,8 +18,8 @@ class ProjectsController < ApplicationController
             redirect_to projects_path
             flash[:success] = "Your new project has been created!"
         else
+            flash.now[:message] = "Please be sure to fill out your title and description."
             render :new
-            flash[:message] = "Please be sure to fill out your title and description."
         end
     end
 

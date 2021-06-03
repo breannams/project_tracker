@@ -37,8 +37,15 @@ class EntriesController < ApplicationController
         file = ActiveStorage::Attachment.find(params[:id])
         file.purge
         redirect_back(fallback_location: entries_path)
-      end
+    end
       
+   def destroy
+    if @entry.present?
+        @entry.destroy
+        redirect_to projects_path
+        flash[:success] = "Your entry has been deleted."
+    end
+   end
 
     private
     
