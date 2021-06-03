@@ -1,6 +1,6 @@
 
 class SessionsController < ApplicationController
-    before_action :require_log_in, except: [:login, :create, :home, :destroy, :omniauth]
+   
     def home
     end
 
@@ -21,7 +21,6 @@ class SessionsController < ApplicationController
     def omniauth
         @user = User.find_or_create_by(uid: auth['uid']) do |user|
             user.username = auth['info']['name']
-            user.email = auth['info']['email']
             user.password = SecureRandom.hex
           end
           if @user.save

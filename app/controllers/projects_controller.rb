@@ -4,11 +4,12 @@ class ProjectsController < ApplicationController
 
     def index
         if params[:user_id]
-            @user.find_by_id(params[:id])
+          @user =  User.find_by_id(params[:user_id])
             if @user
-            @projects = @user.projects
+             @projects = @user.projects
             else
                 flash[:message] = "That user doesn't exist."
+                @projects = Project.all
             end
         else
             @projects = Project.all
@@ -16,12 +17,16 @@ class ProjectsController < ApplicationController
     end
 
     def new
-        @project = Project.new
-        @categories = Category.all
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @project = @user.projects.build
+        else
+            @project = Project.new
+        end
+             @categories = Category.all
     end
 
     def create 
-        @project = Project.create(project_params)
+        @project = current_user.projects.build(project_params)
      
         if @project.save
             redirect_to projects_path
@@ -37,6 +42,7 @@ class ProjectsController < ApplicationController
     end
 
     def show
+
     end
 
     def edit
@@ -68,6 +74,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:title, :description, :collaboration, :public, category_ids:[], categories_attributes: [:name])
+        params.require(:project).permit(:title, :description, :collaboration, :public, category_ids: [], categories_attributes: [:name])
     end
 end

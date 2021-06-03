@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def show
-     
+     redirect_to '/' if !@user
     end
 
 
