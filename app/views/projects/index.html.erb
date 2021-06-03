@@ -1,5 +1,5 @@
 
-<h1>Your projects:</h1>
+<h1><%= @user.username %>'s projects:</h1>
 <ul>
 <% @projects.each do |project| %>
   <li><h2>Title: <%= project.title %></h2>

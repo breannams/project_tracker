@@ -1,11 +1,12 @@
 class Project < ApplicationRecord
+    belongs_to :user
     has_many :entries, dependent: :delete_all
     has_many :project_categories
     
     has_many :categories, through: :project_categories
     has_many :users, through: :entries
     
-    validates_presence_of :title, :description
+    #validates_presence_of :title, :description
 
     accepts_nested_attributes_for :categories
     
