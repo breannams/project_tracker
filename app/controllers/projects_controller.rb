@@ -43,8 +43,13 @@ class ProjectsController < ApplicationController
         end
     end
 
-    # def destroy
-    # end
+    def destroy
+        if @project.present?
+            @project.destroy
+            redirect_to projects_path
+            flash[:success] = "Your project has been deleted."
+        end
+       end
 
 
     private
