@@ -2,21 +2,6 @@
 
 <%= render partial: "layouts/errors", locals: {object: @entry} %>
 
-<%= form_for @entry do |f| %>
-    <%= f.label :project_id %>
-    <%= f.collection_select :project_id, Project.all, :id, :title, include_blank:true %>
-
-
-    <%= f.label :notes %>
-    <%= f.text_area :notes %>
-    <br>
-
-
-     <strong> Attachments </strong>
-     <%= f.file_field :images, multiple: true%>
-    <br>
-<%= f.submit %>
-    <%end %>
-
+<%= render partial: 'form', locals: {entry: @entry} %>
 
     

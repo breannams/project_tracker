@@ -1,25 +1,5 @@
-<% if @entry.project %>
-    <h1>New entry for <%= @entry.project.title %></h1>
-<% else %>
-    <h1> Create a new Entry </h1>
-<% end %>
+<h1>New entry for <%= @entry.project.title %></h1>
 
 <%= render partial: "layouts/errors", locals: {object: @entry} %>
 
-<%= form_for ([@entry.project, @entry]) do |f| %>
-    <% if !@entry.project %>
-        <%= f.label :project_id  %>
-        <%= f.collection_select :project_id, Project.all, :id, :title%>
-    <% else %>
-        <%= f.hidden_field :project_id %>
-    <% end %>
-
-    <%= f.label :notes %>
-    <%= f.text_area :notes %>
-    <br>
-
-     <%=f.label :images %>
-     <%= f.file_field :images, multiple: true%>
-    <br>
-<%= f.submit %>
-    <%end %>
+    <%= render partial: 'form' , locals: {entry: [@entry.project, @entry]}%>

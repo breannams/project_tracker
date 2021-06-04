@@ -1,0 +1,13 @@
+<%= form_for entry do |f| %>
+    <%= f.hidden_field :project_id %>
+        <%= f.label :notes %>
+        <%= f.text_area :notes %>
+        <br><br>
+    
+        <strong> Attachments </strong>
+        <%= f.file_field :images, multiple: true%>
+        <br><br>
+   
+    <%= f.submit %>
+
+    <%end %>
