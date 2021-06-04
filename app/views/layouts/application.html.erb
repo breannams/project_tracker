@@ -11,6 +11,25 @@
   </head>
 
   <body>
+
+  <div id = "navbar">
+    <% if logged_in?%>
+      <%= link_to "Create a new Project", new_project_path %> |
+      <%= link_to "My projects", user_projects_path(current_user) %> |
+      <%= link_to "View all Projects", projects_path %> |
+      <%= link_to "View all Categories", categories_path %> |
+      <%= link_to "Home", user_path(current_user)%> |
+      <%= link_to "Logout", logout_path, method:"delete"%> 
+
+    <% else %>
+      <%=link_to "Sign Up", signup_path %> |
+      <%=link_to "Log In", login_path %> |
+      <%= link_to("Log In with Google", '/auth/google_oauth2', method: :post) %> 
+  <% end %>
+
+</div>
+
+
   <div id = 'flash' class= 'success' style='color:green'>
       <%= flash[:success] if flash[:success] %>
     </div>
@@ -18,7 +37,7 @@
     <div id = 'flash' class= 'error' style='color:red'>
       <%= flash[:message] if flash[:message] %>
     </div>
-  </body>
+ 
     <%= yield %>
 
   
