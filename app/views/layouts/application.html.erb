@@ -16,7 +16,7 @@
     <% if logged_in?%>
       <%= link_to "Create a new Project", new_project_path %> |
       <%= link_to "My projects", user_projects_path(current_user) %> |
-      <%= link_to "View all Projects", projects_path %> |
+      <%= link_to "View all Projects", projects_all_path %> |
       <%= link_to "View all Categories", categories_path %> |
       <%= link_to "Home", user_path(current_user)%> |
       <%= link_to "Logout", logout_path, method:"delete"%> 
