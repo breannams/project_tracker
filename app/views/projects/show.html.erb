@@ -16,7 +16,7 @@
 <%end%>
 
 <h1>Entries: </h1>
-
+    
 <ol><% @project.entries.each do |entry| %>
     <li>
     <%= entry.notes %>
@@ -26,8 +26,10 @@
     <h3>Attachments:</h3>
     <% entry.images.each do |file| %>
         <%= image_tag file %>
+            <% if @project.user == current_user || entry.user == current_user %>
             <%= link_to "Remove image", delete_file_entry_url(file.id), method: :delete, data: {confirm: 'Are you sure?'} %>
         <% end %>
+    <% end %>
     <% end %>
 
 <br>

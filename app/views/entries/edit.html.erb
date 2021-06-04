@@ -1,7 +1,3 @@
-<div id = 'flash' class= 'error' style='color:red'>
-<%= flash[:message] if flash[:message] %>
-</div>
-
 <h1> Edit This Entry </h1>
 
 <%= form_for @entry do |f| %>
@@ -13,7 +9,8 @@
     <%= f.text_area :notes %>
     <br>
 
-     <%=f.label :images %>
+
+     <strong> Attachments </strong>
      <%= f.file_field :images, multiple: true%>
     <br>
 <%= f.submit %>

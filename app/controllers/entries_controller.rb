@@ -41,8 +41,8 @@ class EntriesController < ApplicationController
 
 
     def delete_file
-        file = ActiveStorage::Attachment.find(params[:id])
-        file.purge
+        @image = ActiveStorage::Attachment.find(params[:id])
+        @image.purge
         redirect_back(fallback_location: entries_path)
     end
       
