@@ -3,20 +3,25 @@
 <ul>
 <% @projects.each do |project| %>
   <li><h2>Title: <%= project.title %></h2>
-    -Number of Entries: <%= project.entries.count %>
+    <ul>
+    <li>Number of Entries: <%= project.entries.count %></li>
     <br>
-    -Created on:<%= project.created_at.strftime("%m/%e/%Y %l:%M %p") %>
+
+    <li>Created on:<%= project.created_at.strftime("%m/%e/%Y %l:%M %p") %></li>
     <br>
-    -Last updated on:<%= project.updated_at.strftime("%m/%e/%Y %l:%M %p") %>
+
+    <li>Last updated on:<%= project.updated_at.strftime("%m/%e/%Y %l:%M %p") %></li>
     <br>
-  
+  </ul>
 
 <% if project.categories.any? %>
     <b>Categories:</b>
     <br>
+    <ul>
     <% project.categories.each do |category| %>
-    -<%= link_to(category.name, category) %>
+    <li><%= link_to(category.name, category) %></li>
    <br>
+   </ul>
      <%end%>
 <% end %>
     <br>

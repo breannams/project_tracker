@@ -1,6 +1,4 @@
 <h1>Projects that are collaboration friendly! </h1>
-
-<% if @projects.collaboration %>
 <ul>
     <% @projects.each do |project| %>
         <li><h2><%= link_to( project.title,project) %></h2></li>
@@ -9,6 +7,5 @@
         <br>
         <li>Number of Entries: <%= project.entries.count %></li>
         </ul>
-        <% end %>
-        </ul>
     <% end %>
+    </ul>
