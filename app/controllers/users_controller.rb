@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :set_user, only:[:show]
     before_action :require_log_in, only: [:show]
 
     def new
@@ -18,14 +17,15 @@ class UsersController < ApplicationController
     end
 
     def show
-     redirect_to '/' if !@user
+        @user = User.find_by_id(params[:id])
+        if @user != current_user
+            flash[:message] = "you do not have access to this user's profile."
+            redirect_to user_path(current_user)
+        end
     end
 
 
     private
-    def set_user
-        @user = User.find_by_id(params[:id])
-    end
 
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation)

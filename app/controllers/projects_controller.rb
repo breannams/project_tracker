@@ -44,7 +44,6 @@ class ProjectsController < ApplicationController
     end
     
     def update
-       
         if @project.update(project_params)
             redirect_to project_path(@project)
             flash[:success] = "Your project has been updated."
@@ -69,6 +68,10 @@ class ProjectsController < ApplicationController
     
     def set_project
         @project = Project.find_by_id(params[:id])
+        if !@project
+            flash[:message] = "Project was not found."
+            redirect_to root_path
+        end
     end
 
     def project_params
