@@ -60,7 +60,10 @@ class ProjectsController < ApplicationController
             flash[:success] = "Your project has been deleted."
         end
        end
-
+    
+    def collaboration
+        @projects = Project.collaboration
+    end
 
     private
     

@@ -10,6 +10,9 @@ class Project < ApplicationRecord
 
     accepts_nested_attributes_for :categories
     
+    scope :collaboration, -> { where(collaboration: true)}
+
+
     def categories_attributes=(attributes)
       attributes.values.each do |category_attr|
         if !category_attr[:name].blank?

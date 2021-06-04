@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'sessions#home'
+  
+  get '/projects/collaboration', to: 'projects#collaboration'
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
