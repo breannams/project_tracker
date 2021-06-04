@@ -1,4 +1,4 @@
-<h1>Projects for <%= @category.name %> </h1>
+<h1>Category: <%= @category.name %> - <%= @category.projects.count %> projects</h1>
 
 <ol>
 <% @category.projects.each do |project| %>
