@@ -3,8 +3,9 @@
     <% @projects.each do |project| %>
         <li><h2><%= link_to( project.title,project) %></h2></li>
         <ul>
+        <li>Created by: <%= project.user.username %>
         <li>Description: <%= project.description %></li>
-        <br>
+     
         <li>Number of Entries: <%= project.entries.count %></li>
         </ul>
     <% end %>
