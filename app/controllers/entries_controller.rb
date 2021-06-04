@@ -30,8 +30,9 @@ class EntriesController < ApplicationController
 
     def update
         if @entry.update(entry_params)
-            redirect_to project_path(params[:entry][:project_id])
             flash[:sucess] = "Your entry has been updated"
+            redirect_to project_path(params[:entry][:project_id])
+         
         else
             render :edit
         end
