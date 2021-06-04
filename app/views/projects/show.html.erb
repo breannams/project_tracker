@@ -16,7 +16,14 @@
 <%end%>
 
 <h1>Entries: </h1>    
+
+
 <% if @project.user == current_user || @project.collaboration %>
+
+    <% if @project.entries.empty? %>
+        <h2>There are no entries yet! create one <%=link_to "here", new_project_entry_path(@project)%> </h2>
+        <%end%>
+
 <h2><%= link_to "Add a new entry", new_project_entry_path(@project) %></h2>
     <% end %>
 <ul>  
