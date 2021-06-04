@@ -5,14 +5,12 @@ class ProjectsController < ApplicationController
     def index
         if params[:user_id]
           @user =  User.find_by_id(params[:user_id])
-            if @user
-             @projects = @user.projects
-            else
+            if !@user
                 flash[:message] = "That user doesn't exist."
-                @projects = Project.all
+                redirect_to user_projects_path
+            else
+                @projects = @user.projects
             end
-        else
-            @projects = Project.all
         end
     end
 
@@ -44,6 +42,7 @@ class ProjectsController < ApplicationController
     end
     
     def update
+       
         if @project.update(project_params)
             redirect_to project_path(@project)
             flash[:success] = "Your project has been updated."
@@ -55,7 +54,7 @@ class ProjectsController < ApplicationController
     def destroy
         if @project.present?
             @project.destroy
-            redirect_to projects_path
+            redirect_to root_path
             flash[:success] = "Your project has been deleted."
         end
        end
@@ -68,10 +67,6 @@ class ProjectsController < ApplicationController
     
     def set_project
         @project = Project.find_by_id(params[:id])
-        if !@project
-            flash[:message] = "Project was not found."
-            redirect_to root_path
-        end
     end
 
     def project_params

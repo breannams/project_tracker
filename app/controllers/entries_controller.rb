@@ -17,8 +17,8 @@ class EntriesController < ApplicationController
         @entry = current_user.entries.create(entry_params)
      
         if @entry.save
+            flash[:success] = "Your entry has been created!"
             redirect_to project_path(params[:entry][:project_id])
-            flash[:sucess] = "Your entry has been created!"
         else
             render :new
         end
@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
    def destroy
     if @entry.present?
         @entry.destroy
-        redirect_to projects_path
+        redirect_to user_projects_path(current_user)
         flash[:success] = "Your entry has been deleted."
     end
    end
