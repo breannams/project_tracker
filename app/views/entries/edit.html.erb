@@ -1,5 +1,7 @@
 <h1> Edit This Entry </h1>
 
+<%= render partial: "layouts/errors", locals: {object: @entry} %>
+
 <%= form_for @entry do |f| %>
     <%= f.label :project_id %>
     <%= f.collection_select :project_id, Project.all, :id, :title, include_blank:true %>

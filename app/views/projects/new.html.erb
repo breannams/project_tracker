@@ -1,12 +1,6 @@
 <h1>Create a New project </h1>
 
-<% if @project.errors.any? %>
-<%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:
-<%@project.errors.full_messages.each do |msg| %>
-  <%= msg %>
-  <% end %>
-  <% end %>
-
+  <%= render partial: "layouts/errors", locals: {object: @project} %>
 
 <%= form_for @project do |f| %>
     

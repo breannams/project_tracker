@@ -4,6 +4,8 @@
     <h1> Create a new Entry </h1>
 <% end %>
 
+<%= render partial: "layouts/errors", locals: {object: @entry} %>
+
 <%= form_for ([@entry.project, @entry]) do |f| %>
     <% if !@entry.project %>
         <%= f.label :project_id  %>

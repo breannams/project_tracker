@@ -22,14 +22,12 @@ class ProjectsController < ApplicationController
     end
 
     def create 
-       # binding.pry
         @project = current_user.projects.build(project_params)
      
         if @project.save
             redirect_to user_projects_path(current_user)
             flash[:success] = "Your new project has been created!"
         else
-            flash.now[:message] = "Please be sure to fill out your title and description."
             render :new
         end
     end
