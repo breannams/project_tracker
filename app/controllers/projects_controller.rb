@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
     def destroy
         if @project.present?
             @project.destroy
-            redirect_to root_path
+            redirect_to user_projects_path(@project.user)
             flash[:success] = "Your project has been deleted."
         end
        end
