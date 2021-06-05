@@ -2,27 +2,4 @@
 
 <h2><%= link_to "See all projects that allow for collaborations!", projects_collaboration_path%> </h2>
 
-
-<% @projects.each do |project| %>
-    <% if project.public == true %>
-    <ul>
- <li><h3>Title: <%= link_to(project.title, project) %> </h3></li>
-    <ul>
-        <li> Created by: <%= project.user.username %></li>
-
-            <% project.categories.each do |category| %>
-                <li> <%= link_to(category.name, category) %> </li>
-            <%end%>
-
-            <li>Description: <%= project.description %></li>
-            <li>Number of Entries: <%= project.entries.count %> </li>
-
-                <% if project.collaboration %>
-                   <li>This is a collaboration project! Lets work on it together! :)</li>
-                <% end %>
-            </ul>
-        </ul>
-        
-    <% end %>
-    
-<% end %>
+<%= render 'projects'%>

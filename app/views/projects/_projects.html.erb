@@ -1,0 +1,26 @@
+<% @projects.each do |project| %>
+    
+    <ul>
+ <li><h3>Title: <%= link_to(project.title, project) %> </h3></li>
+    <ul>
+        <li> Created by: <%= project.user.username %></li>
+        <% if project.collaboration %>
+            <li><strong>This is a collaboration project! Lets work on it together! :)</strong></li>
+        <% end %>
+        <% if project.categories.any? %>
+        <strong><li>Categories:</strong></li>
+        <ul>
+            <% project.categories.each do |category| %>
+                
+                <li> <%= link_to(category.name, category) %> </li>
+            <%end%>
+            </ul>
+                <%end%>
+            <li>Description: <%= project.description %></li>
+            <li>Number of Entries: <%= project.entries.count %> </li>
+
+             </ul>
+        </ul>
+
+    
+<% end %>

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :projects do
+  resources :projects, except: [:index] do
     resources :entries
   end
   

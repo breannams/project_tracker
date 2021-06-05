@@ -48,7 +48,7 @@ class EntriesController < ApplicationController
    def destroy
     if @entry.present?
         @entry.destroy
-        redirect_to user_projects_path(current_user)
+        redirect_to project_path(@entry.project)
         flash[:success] = "Your entry has been deleted."
     end
    end

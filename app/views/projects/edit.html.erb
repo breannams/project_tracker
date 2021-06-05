@@ -3,10 +3,7 @@
 
 <%= render partial: "layouts/errors", locals: {object: @project} %>
 <%= form_for @project do |f| %>
-  <%= f.label :public, "Check this box if you would like your project to be able to be viewed by the public for inspiration!" %>
-  <%= f.check_box :public %>
-  <br>
-  
+
     <%= f.label :collaboration, "Check this box if you would like your project to be public to work on as a collaboration." %>
     <%= f.check_box :collaboration %>
     <br>

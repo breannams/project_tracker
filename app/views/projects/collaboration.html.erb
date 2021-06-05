@@ -1,12 +1,3 @@
 <h1>Projects that are collaboration friendly! </h1>
-<ul>
-    <% @projects.each do |project| %>
-        <li><h2><%= link_to( project.title,project) %></h2></li>
-        <ul>
-        <li>Created by: <%= project.user.username %>
-        <li>Description: <%= project.description %></li>
-     
-        <li>Number of Entries: <%= project.entries.count %></li>
-        </ul>
-    <% end %>
-    </ul>
+
+<%= render 'projects' %>
