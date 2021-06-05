@@ -1,5 +1,4 @@
 class EntriesController < ApplicationController
-    before_action :require_log_in
     before_action :set_entry, only:[:edit, :update, :destroy]
 
     def new

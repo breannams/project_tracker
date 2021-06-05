@@ -31,11 +31,11 @@
 
 
   <div id = 'flash' class= 'success' style='color:green'>
-      <%= flash[:success] if flash[:success] %>
+    <h2>  <%= flash[:success] if flash[:success] %></h2>
     </div>
 
     <div id = 'flash' class= 'error' style='color:red'>
-      <%= flash[:message] if flash[:message] %>
+     <h2> <%= flash[:message] if flash[:message] %></h2>
     </div>
  
     <%= yield %>

@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-    before_action :require_log_in
     before_action :set_project, only:[:show, :edit, :update, :destroy]
 
     def index
@@ -54,7 +53,7 @@ class ProjectsController < ApplicationController
     def destroy
         if @project.present?
             @project.destroy
-            redirect_to user_projects_path(@project.user)
+            redirect_to user_projects_path(current_user)
             flash[:success] = "Your project has been deleted."
         end
        end
@@ -67,6 +66,7 @@ class ProjectsController < ApplicationController
     
     def set_project
         @project = Project.find_by_id(params[:id])
+        redirect_to user_projects_path(current_user) if !@project
     end
 
     def project_params

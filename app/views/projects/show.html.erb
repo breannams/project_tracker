@@ -3,34 +3,28 @@
 
 <h2>Description: <%= @project.description %></h2>
 
-<% if @project.collaboration %>
-   <strong> This is a collaboration project! Please note that the original creator can edit or delete any entries that are added by other users. </strong>
-    <%end %>
+<div style = "color: red" class = "collab">
+<strong><%= collab_warning @project%></strong>
+</div>
 
-<% if @project.categories.any? %>
-<h4><ul><% @project.categories.each do |category| %>
-   <li> Category: <%= link_to(category.name, category) %> </li>
-   
-    <%end%></h4>
-    </ul>
-<%end%>
 
+<%= has_a_category @project %>
+
+<br>
+<br>
 <h1>Entries: </h1>    
 
+<h2><%= can_add_entry @project %></h2>
 
-<% if @project.user == current_user || @project.collaboration %>
-
-<h2><%= link_to "Add a new entry", new_project_entry_path(@project) %></h2>
-    <% end %>
 <ul>  
 <% @project.entries.each do |entry| %>
     
     <li>
-    <strong><%= entry.notes %></strong>
+    <h2><%= entry.notes %></h2>
     </li>
 
     <% if entry.images.any? %>
-    <h3>Attachments:</h3>
+    <h4>Attachments:</h4>
     <% entry.images.each do |file| %>
         <%= image_tag file %>
             <% if @project.user == current_user || entry.user == current_user %>
@@ -41,19 +35,15 @@
 
 <br>
 <ul>
-    <li>Entry Created by: <%= entry.user.username %></li>
+    <li><%= entry_created_by entry %></li>
  
-    <li>Created on: <%= entry.created_at.strftime("%m/%e/%Y %l:%M %p") %></li>
-  
-    <li>Last Updated on: <%= entry.updated_at.strftime("%m/%e/%Y %l:%M %p") %></li>
+    <li> <%= created_on entry %> </li>
+    <li> <%= last_updated entry %> </li>
     <br>
   
-    <% if current_user == entry.user || current_user == @project.user%>
-    <%= link_to "Edit Entry", edit_entry_path(entry) %>
-    <%= link_to "Delete Entry", entry, method: :delete, data: {confirm: 'Are you sure you want to delete this entry?'} %>
-    <br>
-    <br>
-    <% end %></ul>
-    
+    <%= can_edit_entry entry %>
+    <%= can_delete_entry entry %>
+    </ul>
     
  <% end %>   
+ </ul>

@@ -1,12 +1,18 @@
 <% @projects.each do |project| %>
     
     <ul>
- <li><h3>Title: <%= link_to(project.title, project) %> </h3></li>
+ <li><h3>Title: <%= link_to(project.title, project) %></h3>
+ 
+ <%if project.user != current_user%>
+    ,Created by: <%= project.user.username %> </li>
+
+    <div style = "color: red" class = "collab">
+    <h4><u><strong><%= collaborations project %></strong></u></h4>
+    </div>
+ <%end%>
     <ul>
-        <li> Created by: <%= project.user.username %></li>
-        <% if project.collaboration %>
-            <li><strong>This is a collaboration project! Lets work on it together! :)</strong></li>
-        <% end %>
+ 
+
         <% if project.categories.any? %>
         <strong><li>Categories:</strong></li>
         <ul>
@@ -16,11 +22,18 @@
             <%end%>
             </ul>
                 <%end%>
-            <li>Description: <%= project.description %></li>
-            <li>Number of Entries: <%= project.entries.count %> </li>
 
+            <li>Description: <%= project.description %></li>
+
+            <li> <%= number_of_entries project %></li>
+            <li> <%= created_on project %> </li>
+            <li> <%= last_updated project %> </li>
              </ul>
         </ul>
-
+        <% if project.user == current_user%>
+         <%= link_to "View this project", project_path(project) %>
+        <%= link_to "Edit this project", edit_project_path(project)%>
+        <%= link_to "Delete this Project", project, method: :delete, data: {confirm: 'Are you sure you want to delete this project?'} %>
+      <% end %>
     
 <% end %>

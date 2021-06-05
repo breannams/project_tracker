@@ -1,12 +1,7 @@
 
 class SessionsController < ApplicationController
-   
-    def home
-    end
-
-    def login
-    end
-
+  skip_before_action :require_log_in
+  
     def create
             @user = User.find_by(username: params[:username])
             if @user && @user.authenticate(params[:password])

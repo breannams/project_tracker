@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    before_action :require_log_in
    helper_method :current_user, :logged_in?
    
 private
@@ -11,8 +12,6 @@ private
     end
 
     def require_log_in
-        if !logged_in?
-            redirect_to root_path
-        end
+        redirect_to root_path if !logged_in?
     end
 end
