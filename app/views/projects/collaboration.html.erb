@@ -2,4 +2,4 @@
 <br>
 <%= empty_project_message%>
 <br>
-<%= render 'projects' %>
+<%= render partial: 'projects', locals: {projects: @projects} %>
