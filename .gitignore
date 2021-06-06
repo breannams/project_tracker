@@ -32,8 +32,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-spec.md
-To_do.md
 /public/packs
 /public/packs-test
 /node_modules
