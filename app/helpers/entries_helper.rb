@@ -1,12 +1,7 @@
 module EntriesHelper
-    def entry_created_by(entry)
-        "Entry Created by: #{entry.user.username}"
-    end
 
     def can_add_entry(project)
-        if @project.user == current_user || @project.collaboration
-            link_to( "Add a new entry", new_project_entry_path(@project) )
-        end
+        link_to( "Add a new entry", new_project_entry_path(@project) ) if @project.user == current_user || @project.collaboration
     end
 
     def can_delete_entry(entry)

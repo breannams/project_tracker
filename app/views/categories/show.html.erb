@@ -1,7 +1,7 @@
 <h1>Category: <%= @category.name %> - <%= @category.projects.count %> projects</h1>
 
 <ol>
-<% @category.projects.each do |project| %>
-    <li><%= link_to project.title, project %> </li>
-<%end%>
+    <% @category.projects.each do |project| %>
+        <li><%= link_to project.title, project %> </li>
+    <%end%>
 </ol>

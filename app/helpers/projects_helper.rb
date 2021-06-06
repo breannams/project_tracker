@@ -1,12 +1,6 @@
 module ProjectsHelper
     def empty_project_message
-        if @projects.empty? 
-            tag.h2(link_to("There are no projects yet! Create one here", new_project_path) )
-        end
-    end
-
-    def number_of_entries(project)
-        "Number of Entries: #{project.entries.count}"
+            tag.h2(link_to("There are no projects yet! Create one here", new_project_path) ) if @projects.empty? 
     end
    
     def created_on(project)
@@ -26,17 +20,5 @@ module ProjectsHelper
          "This is a collaboration project! Please note that the original creator can edit or delete any entries that are added by other users." if @project.collaboration 
         end
     end
-   
-    def has_a_category(project)
-        if @project.categories.any?
-            tag.h4("Categories:")
-        @project.categories.each do |category|
-            link_to(category.name, category)
-            end
-        end
-    end
-
-
-
 
 end

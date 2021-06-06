@@ -1,5 +1,6 @@
+<%= render partial: "layouts/errors", locals: {object: @project} %>
+
 <%= form_for @project do |f| %>
-    
 
     <%= f.label :collaboration, "Check this box if you would like your project to be public to work on as a collaboration." %>
     <%= f.check_box :collaboration %>
@@ -10,10 +11,10 @@
     <br>
     
     <%= f.label :description %>
-        <%= f.text_area :description %>
+    <%= f.text_area :description %>
     <br>
     
-    <%= f.label "Category:" %>
+    <%= f.label :category %>
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
     <br>
 
@@ -25,4 +26,4 @@
     
   <%= f.submit %>
 
-  <%end %>
+<%end %>

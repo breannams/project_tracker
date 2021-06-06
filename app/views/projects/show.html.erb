@@ -8,42 +8,45 @@
 </div>
 
 
-<%= has_a_category @project %>
+<%= render partial: 'categories/category', locals: {project: @project}%>
 
 <br>
 <br>
+
 <h1>Entries: </h1>    
 
 <h2><%= can_add_entry @project %></h2>
 
 <ul>  
-<% @project.entries.each do |entry| %>
-    
-    <li>
-    <h2><%= entry.notes %></h2>
-    </li>
+    <% @project.entries.each do |entry| %>
+        
+        <li>
+        <h2><%= entry.notes %></h2>
+        </li>
 
-    <% if entry.images.any? %>
-    <h4>Attachments:</h4>
-    <% entry.images.each do |file| %>
-        <%= image_tag file %>
-            <% if @project.user == current_user || entry.user == current_user %>
-            <%= link_to "Remove image", delete_file_entry_url(file.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% if entry.images.any? %>
+        <h4>Attachments:</h4>
+        <% entry.images.each do |file| %>
+            <%= image_tag file %>
+                <% if @project.user == current_user || entry.user == current_user %>
+                <%= link_to "Remove image", delete_file_entry_url(file.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+            <% end %>
         <% end %>
-    <% end %>
-    <% end %>
+        <% end %>
 
-<br>
+    <br>
 <ul>
-    <li><%= entry_created_by entry %></li>
- 
+
+    <li>Entry Created by: entry.user.username</li>
     <li> <%= created_on entry %> </li>
     <li> <%= last_updated entry %> </li>
     <br>
-  
+
     <%= can_edit_entry entry %>
     <%= can_delete_entry entry %>
-    </ul>
     
- <% end %>   
- </ul>
+    </ul>
+
+<% end %>   
+</ul>
+ 

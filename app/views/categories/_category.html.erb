@@ -1,0 +1,11 @@
+<% if project.categories.any? %>
+
+    <strong><li>Categories:</strong></li>
+
+    <ul>
+        <% project.categories.each do |category| %>
+            <li> <%= link_to(category.name, category) %> </li>
+        <%end%>
+    </ul>
+    
+<%end%>
