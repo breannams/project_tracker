@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>ProjectTracker</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+        
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,31 +15,34 @@
 
   <body>
 
-  <div id = "navbar">
-    <% if logged_in?%>
-      <%= link_to "Create a new Project", new_project_path %> |
-      <%= link_to "My projects", user_projects_path(current_user) %> |
-      <%= link_to "View all Projects", projects_all_path %> |
-      <%= link_to "View all Categories", categories_path %> |
-      <%= link_to "Home", user_path(current_user)%> |
-      <%= link_to "Logout", logout_path, method:"delete"%> 
-
-    <% else %>
-      <%=link_to "Sign Up", signup_path %> |
-      <%=link_to "Log In", login_path %> |
-      <%= link_to("Log In with Google", '/auth/google_oauth2', method: :post) %> 
-  <% end %>
-
-</div>
-
-
-  <div id = 'flash' class= 'success' style='color:green'>
-    <h2>  <%= flash[:success] if flash[:success] %></h2>
+  <nav class="navbar has-shadow is-primary" >
+    <div class="navbar-menu">
+    <div class="is-size-1">Project Tracker</div>
+      <div class="navbar-end">
+      <% if logged_in?%>
+       <div class="navbar-item"> 
+       <%= link_to "Create a new Project", new_project_path %> |
+        <%= link_to "My projects", user_projects_path(current_user) %> |
+        <%= link_to "View all Projects", projects_all_path %> |
+        <%= link_to "View all Categories", categories_path %> |
+        <%= link_to "Home", user_path(current_user)%> |
+        <%= link_to "Logout", logout_path, method:"delete"%> 
+        </div>
+      <% else %>
+        <%=link_to "Sign Up", signup_path %> |
+        <%=link_to "Log In", login_path %> |
+        <%= link_to("Log In with Google", '/auth/google_oauth2', method: :post) %> 
+    <% end %>
     </div>
+  </div>
+</nav>
 
-    <div id = 'flash' class= 'error' style='color:red'>
-     <h2> <%= flash[:message] if flash[:message] %></h2>
-    </div>
+
+  
+    <h2 class="has-text-primary is-size-3">  <%= flash[:success] if flash[:success] %></h2>
+
+    <h2 class="has-text-danger"> <%= flash[:message] if flash[:message] %></h2>
+  
  
     <%= yield %>
 

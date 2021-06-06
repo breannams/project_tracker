@@ -1,7 +1,9 @@
-<h1>Category: <%= @category.name %> - <%= @category.projects.count %> projects</h1>
+<div class = "content">
+<h1 class= "is-size-1">Category: <%= @category.name %> - <%= @category.projects.count %> projects</h1>
 
-<ol>
+<ul>
     <% @category.projects.each do |project| %>
         <li><%= link_to project.title, project %> </li>
     <%end%>
-</ol>
+</ul>
+</div>

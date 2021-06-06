@@ -15,12 +15,22 @@
  */
  .field_with_errors {
     padding: 2px;
-    background-color: red;
+    background-color: darkred;
     display: table;
   }
 
   
-  body {
-    background-color: rgb(117, 230, 245);
+ body {
+    background-color:darkgray;
+    height: 100%;
   }
   
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}

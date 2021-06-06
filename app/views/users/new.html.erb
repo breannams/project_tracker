@@ -1,7 +1,8 @@
-<h1> Sign up </h1>
+<h1 class = "is-size-1"> Sign up </h1>
 
 <%= render partial: "layouts/errors", locals: {object: @user} %>
 
+<div class= "is-size-3">
 <%= form_for(@user, url: '/signup') do |f|%>
 
     <%= f.label :username %>
@@ -16,6 +17,7 @@
     <%= f.password_field :password_confirmation %>
     <br>
 
-    <%= f.submit "Sign Up" %>
+    <input class="button is-default is-primary" type="submit" value="Sign up">
 
 <% end %>
+</div>

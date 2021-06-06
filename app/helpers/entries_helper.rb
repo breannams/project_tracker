@@ -5,7 +5,7 @@ module EntriesHelper
     end
 
     def can_delete_entry(entry)
-        link_to( "Delete Entry", entry, method: :delete) if current_user == entry.user || current_user == @project.user
+        link_to( "Delete Entry", entry, method: :delete,  data: {confirm: 'Are you sure?'}) if current_user == entry.user || current_user == @project.user
  
     end
 

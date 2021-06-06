@@ -1,31 +1,35 @@
+<div class="content">
 
-<h1> <%= @project.title %> by <%= @project.user.username %></h1>
+<h1 class="title"> <%= @project.title %> by <%= @project.user.username %></h1>
 
-<h2>Description: <%= @project.description %></h2>
+<h2 class="subtitle">Description: <%= @project.description %></h2>
 
-<div style = "color: red" class = "collab">
+<div class= "is-size-5">
 <strong><%= collab_warning @project%></strong>
 </div>
-
+<br>
+<br>
 
 <%= render partial: 'categories/category', locals: {project: @project}%>
 
-<br>
+
 <br>
 
 <h1>Entries: </h1>    
 
 <h2><%= can_add_entry @project %></h2>
 
+<br>
+
 <ul>  
     <% @project.entries.each do |entry| %>
-        
+        <div class= "box has-background-primary box-shadow">
         <li>
         <h2><%= entry.notes %></h2>
         </li>
 
         <% if entry.images.any? %>
-        <h4>Attachments:</h4>
+      
         <% entry.images.each do |file| %>
             <%= image_tag file %>
                 <% if @project.user == current_user || entry.user == current_user %>
@@ -37,16 +41,18 @@
     <br>
 <ul>
 
-    <li>Entry Created by: entry.user.username</li>
+    <li>Entry Created by: <%= entry.user.username%> </li>
     <li> <%= created_on entry %> </li>
     <li> <%= last_updated entry %> </li>
     <br>
 
-    <%= can_edit_entry entry %>
-    <%= can_delete_entry entry %>
+    
+   <strong><%= can_edit_entry entry %>&nbsp; &nbsp;
+    <%= can_delete_entry entry %> </strong>
     
     </ul>
-
+    </div>
 <% end %>   
 </ul>
- 
+
+</div>
