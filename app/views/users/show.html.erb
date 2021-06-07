@@ -1,6 +1,9 @@
 <h1 class = "is-size-1">Welcome <%= @user.username %></h1>
 
+<div class = "is-size-3">
+<%= link_to "Create a new project!", new_project_path %>
 <br>
-<h2 class = "is-size-3"> All of the projects you have created entries for! </h2>
-
-<%= render partial: '/projects/projects', locals: {projects: @user.projects} %>
+<%= link_to "See all of your projects!", user_projects_path(current_user) %>
+<br>
+<%= link_to "See everyone's projects!", projects_all_path %> 
+</div>
