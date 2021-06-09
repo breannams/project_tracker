@@ -4,11 +4,11 @@ class ProjectsController < ApplicationController
     def index
         if params[:user_id]
           @user =  User.find_by_id(params[:user_id])
-            if !@user
-                flash[:message] = "That user doesn't exist."
-                redirect_to user_projects_path
-            else
+            if @user == current_user
                 @projects = @user.projects
+            else
+                flash[:message] = "You do not have access to this page."
+                redirect_to user_projects_path(current_user)
             end
         end
     end
@@ -41,9 +41,9 @@ class ProjectsController < ApplicationController
     end
     
     def update
-       
+     
         if @project.update(project_params)
-            redirect_to project_path(@project)
+            redirect_to user_projects_path(current_user)
             flash[:success] = "Your project has been updated."
         else
             render :edit
