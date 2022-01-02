@@ -7,3 +7,14 @@
 <br>
 <%= link_to "See everyone's projects!", projects_all_path %> 
 </div>
+
+
+Your entries:
+<% current_user.entries.each do |entry| %>
+<ul>
+<li>    
+Entry's Notes: <%= entry.notes %>
+<li>View this project: <%= link_to(entry.project.title, entry.project)%>
+</li>
+</ul>
+<% end %>

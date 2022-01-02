@@ -5,7 +5,7 @@
 <ul>
    <li><h3 class="is-size-2">Title: <%= link_to(project.title, project) %></h3>
    <%if project.user != current_user%>
-      <li>Created by: <%= project.user.username %> </li>
+ 
 
       <div style = "color: red" class = "collab">
       <h4><u><strong><%= collaborations project %></strong></u></h4>

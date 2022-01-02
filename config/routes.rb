@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
   get '/projects/all', to: 'projects#all'
+
   
   resources :entries do
     member do
