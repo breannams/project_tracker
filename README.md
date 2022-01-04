@@ -1,24 +1,25 @@
-# README
+##Project Tracker
+A blog style app that allows users to show off progress on projects they are working on, as well as create collaboration projects to work on with others.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+Paste this code into your terminal in the folder you would like to save it in
+``` ruby
+git@github.com:breannams/project_tracker.git
+```
+next cd into the folder
+```ruby
+cd project_tracker
+```
 
-* Ruby version
+And then execute:
 
-* System dependencies
+    $ bundle install
 
-* Configuration
+## Usage
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+in your terminal run 
+``` ruby
+rails s
+```
+and navigate to the homepage. Here you can sign up & login and then begin creating new projects & entries for those projects.
